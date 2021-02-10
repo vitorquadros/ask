@@ -42,6 +42,21 @@ app.post("/salvarpergunta", (req, res) => {
   }).then(() => res.redirect("/"));
 });
 
+app.get("/pergunta/:id", (req, res) => {
+  var id = req.params.id;
+  Pergunta.findOne({
+    where: {
+      id: id,
+    },
+  }).then((pergunta) => {
+    if (pergunta != undefined) {
+      res.render("pergunta", { pergunta: pergunta });
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+
 app.listen(3333, () => {
   console.log("Servidor iniciado.");
 });
