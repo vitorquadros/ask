@@ -5,6 +5,13 @@
     <h1 style="margin-top: 1.5rem;"><%= pergunta.titulo %></h1>
     <hr>
     <p><%= pergunta.descricao %></p>
+    <hr>
+    <form action="/responder" method="POST">
+      <h3>Responda</h3>
+      <textarea style="margin: 1rem 0;" class="form-control" placeholder="Sua resposta" name="corpo"></textarea>
+      <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
+      <button class="btn btn-primary">Responder</button>
+    </form>
   </div>
 </body>
 <%- include('partials/footer.ejs'); %>
